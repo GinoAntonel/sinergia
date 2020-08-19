@@ -79,18 +79,16 @@
 </style>
 
 <script>
+export default {
 
+  data: () => ({
 
-  export default {
-
-    data: () => ({
-      item: 1,
-      items: [
-        { text: 'sinergiaargentina_', icon: 'mdi-instagram' },
-        { text: '3516181989', icon: 'mdi-phone' },
-        { text: '3516181989', icon: 'mdi-phone' },
-        { text: 'tinchin@gmail.com', icon: 'mdi-email' },
-      ],
-    }),
-  }
+    items: [
+      { text: 'sinergiaargentina_', icon: 'mdi-instagram' },
+      { text: '3516181989', icon: 'mdi-phone' },
+      { text: '3516181989', icon: 'mdi-phone' },
+      { text: 'tinchin@gmail.com', icon: 'mdi-email' },
+    ],
+  }),
+}
 </script>
