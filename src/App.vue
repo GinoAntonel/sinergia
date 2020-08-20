@@ -3,6 +3,7 @@
     <Toolbar/>
     <v-main>
       <Carrousel/>
+      <Stepper/>
     </v-main>
     <Footer/>
   </v-app>
@@ -12,6 +13,7 @@
 import Toolbar from './components/Toolbar';
 import Carrousel from './components/Carrousel';
 import Footer from './components/Footer';
+import Stepper from './components/Stepper';
 
 export default {
   name: 'App',
@@ -20,6 +22,7 @@ export default {
     Toolbar,
     Carrousel,
     Footer,
+    Stepper
   },
 
   data: () => ({
