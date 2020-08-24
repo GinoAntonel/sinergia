@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "google-spreadsheet": "^3.0.13",
+    "googleapis": "^39.2.0",
     "vue": "^2.6.11",
     "vuetify": "^2.2.11"
   },
@@ -43,5 +45,18 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "description": "## Project setup ``` npm install ```",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GinoAntonel/sinergia.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GinoAntonel/sinergia/issues"
+  },
+  "homepage": "https://github.com/GinoAntonel/sinergia#readme"
 }

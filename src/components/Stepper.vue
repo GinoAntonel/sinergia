@@ -16,10 +16,10 @@
           <v-container>
             <v-row>
               <v-col
-                v-for="(ite, n) in 3"
+                v-for="(ite, n) in 2"
                 :key="n"
                 cols="12"
-                md="4"
+                md="6"
               >
                 <v-item v-slot:default="{ active, toggle }">
                   <v-card
@@ -65,12 +65,15 @@
             <v-col md="4" cols="12" class="d-flex white--text text-center align-center justify-center">
               <v-card>
                 <v-img
-                 :src="require(`../assets/campera${2}.png`)"
+                 :src="require(`../assets/campera${number2}.png`)"
                   class="shrink mr-2 d-flex align-center"
                   contain
                   height="200px"
                 >
-                <div class="display-3 flex-grow-1 text-center">
+                <div class="display-3 flex-grow-1 text-center" v-if="number == 8 || number == 13">
+                  <img height="50px" :src="require(`../assets/modelo${number}.png`)" />
+                </div>
+                <div class="display-3 flex-grow-1 text-center" v-if="number != 8 && number != 13">
                   <img height="80px" :src="require(`../assets/modelo${number}.png`)" />
                 </div>
                 </v-img>
@@ -132,25 +135,88 @@
         </v-slide-group>
       </v-sheet>
       <v-btn color="primary" @click="e13 = 3">Continue</v-btn>
-      <v-btn color="error" @click="e13 = 1">Volver</v-btn>
+      <v-btn text @click="e13 = 1">Volver</v-btn>
     </v-stepper-content>
 
-    <v-stepper-step :rules="[() => false]" step="3">
-      Ad templates
-      <small>Alert message</small>
+    <v-stepper-step step="3" complete>
+      Termina tu campera!
     </v-stepper-step>
 
     <v-stepper-content step="3">
-      <v-card color="grey lighten-1" class="mb-12" height="200px"></v-card>
-      <v-btn color="primary" @click="e13 = 4">Continue</v-btn>
-      <v-btn text>Cancel</v-btn>
+      <v-item-group>
+        <v-container>
+          <v-row justify="center">
+            <v-col md="4" cols="12" class="d-flex white--text text-center align-center justify-center">
+              <v-card>
+                <v-img
+                 :src="require(`../assets/campera${number2}.png`)"
+                  class="shrink mr-2 d-flex align-center"
+                  contain
+                  height="200px"
+                >
+                <div class="display-3 flex-grow-1 text-center" v-if="number == 8 || number == 13">
+                  <img height="50px" :src="require(`../assets/modelo${number}.png`)" />
+                </div>
+                <div class="display-3 flex-grow-1 text-center" v-if="number != 8 && number != 13">
+                  <img height="80px" :src="require(`../assets/modelo${number}.png`)" />
+                </div>
+                </v-img>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-item-group>
+      <v-form ref="form" v-model="valid">
+        <v-container>
+          <v-row>
+            <v-col
+              cols="12"
+              md="4"
+            >
+              <v-text-field
+                v-model="firstname"
+                :rules="nameRules"
+                :counter="10"
+                label="First name"
+                required
+              ></v-text-field>
+            </v-col>
+
+            <v-col
+              cols="12"
+              md="4"
+            >
+              <v-text-field
+                v-model="lastname"
+                :rules="nameRules"
+                :counter="10"
+                label="Last name"
+                required
+              ></v-text-field>
+            </v-col>
+
+            <v-col
+              cols="12"
+              md="4"
+            >
+              <v-text-field
+                v-model="email"
+                :rules="emailRules"
+                label="E-mail"
+                required
+              ></v-text-field>
+            </v-col>
+          </v-row>
+        </v-container>
+        <v-btn class="mr-4" @click="submit">submit</v-btn>
+      </v-form>
     </v-stepper-content>
 
     <v-stepper-step step="4">View setup instructions</v-stepper-step>
 
     <v-stepper-content step="4">
       <v-card color="grey lighten-1" class="mb-12" height="200px"></v-card>
-      <v-btn color="primary" @click="e13 = 1">Continue</v-btn>
+      <v-btn color="primary" @click="">Continue</v-btn>
       <v-btn text>Cancel</v-btn>
     </v-stepper-content>
   </v-stepper>
@@ -158,15 +224,15 @@
 
 
 <script>
+
   export default {
     data () {
       return {
         number: 1,
         number2: 1,
         srcss:[
+          require('../assets/campera0.png'),
           require('../assets/campera1.png'),
-          require('../assets/campera2.png'),
-          require('../assets/campera3.png'),
         ],
         msrcs:[
           require('../assets/modelo1.png'),
@@ -188,7 +254,30 @@
         ],
         model: null,
         e13: 1,
+        //Form
+        valid: false,
+        firstname: '',
+        lastname: '',
+        nameRules: [
+          v => !!v || 'Name is required',
+          v => v.length <= 10 || 'Name must be less than 10 characters',
+        ],
+        email: '',
+        emailRules: [
+          v => !!v || 'E-mail is required',
+          v => /.+@.+/.test(v) || 'E-mail must be valid',
+        ],
       }
     },
+    methods: {
+      probar(n){
+        console.log(n);
+      },
+      submit () {
+        if (this.$refs.form.validate() == true){
+          console.log('guardado');
+        }
+      },
+    }
   }
 </script>
