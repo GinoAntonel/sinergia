@@ -79,7 +79,6 @@
       >
         <v-slide-group
           v-model="model"
-          class="pa-4"
           center-active
           show-arrows
         >
@@ -91,8 +90,8 @@
             <v-card
               :color="active ? '#797a7e' : 'grey lighten-1'"
               class="ma-4"
-              height="200"
-              width="100"
+              height="100"
+              width="200"
               @click="toggle"
             >
               <v-row
@@ -100,18 +99,25 @@
                 align="center"
                 justify="center"
               >
-                <v-scroll-y-transition>
-                  <div
-                    v-if="active"
-                    class="display-3 flex-grow-1 text-center"
-                  >
-                    <v-icon
-                      color="#797a7e"
-                      size="48"
-                      v-text="'mdi-check-circle'"
-                    ></v-icon>
-                  </div>
-                </v-scroll-y-transition>
+                <v-img
+                  class="shrink d-flex align-center"
+                  contain
+                  height="80px"
+                  :src="msrcs[n-1]"
+                >
+                  <v-scroll-y-transition>
+                    <div
+                      v-if="active"
+                      class="display-3 flex-grow-1 text-center"
+                    >
+                      <v-icon
+                        color="white"
+                        size="48"
+                        v-text="'mdi-check-circle'"
+                      ></v-icon>
+                    </div>
+                  </v-scroll-y-transition>
+                </v-img>
               </v-row>
             </v-card>
           </v-slide-item>
@@ -150,6 +156,24 @@
         srcss:[
           require('../assets/camperaP.png'),
           require('../assets/camperaP2.png'),
+        ],
+        msrcs:[
+          require('../assets/modelo.png'),
+          require('../assets/modelo2.png'),
+          require('../assets/modelo3.png'),
+          require('../assets/modelo4.png'),
+          require('../assets/modelo5.png'),
+          require('../assets/modelo6.png'),
+          require('../assets/modelo7.png'),
+          require('../assets/modelo8.png'),
+          require('../assets/modelo9.png'),
+          require('../assets/modelo10.png'),
+          require('../assets/modelo11.png'),
+          require('../assets/modelo12.png'),
+          require('../assets/modelo13.png'),
+          require('../assets/modelo14.png'),
+          require('../assets/modelo15.png'),
+
         ],
         model: null,
         e13: 1,

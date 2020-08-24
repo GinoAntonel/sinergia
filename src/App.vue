@@ -1,13 +1,19 @@
 <template>
   <v-app>
     <Toolbar/>
-    <v-main>
+    <v-main id="ccarrousel">
       <Carrousel/>
       <Stepper/>
     </v-main>
     <Footer/>
   </v-app>
 </template>
+
+<style >
+#ccarrousel{
+  background: black;
+}
+</style>
 
 <script>
 import Toolbar from './components/Toolbar';
