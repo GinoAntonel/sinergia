@@ -32,6 +32,7 @@
                       contain
                       height="200px"
                       :src="srcss[n]"
+                      v-on:click="number2 = n"
                     >
                     <v-scroll-y-transition>
                       <div
@@ -58,20 +59,26 @@
     <v-stepper-step step="2" complete>Selecciona un estilo</v-stepper-step>
 
     <v-stepper-content step="2">
-      <v-container>
-        <v-row justify="center">
-          <v-col md="4" cols="12" class="d-flex white--text text-center align-center justify-center">
-            <v-card >
-              <v-img
-                class="shrink mr-2 d-flex align-center"
-                contain
-                height="200px"
-                src="../assets/camperaP.png"
-              />
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
+      <v-item-group>
+        <v-container>
+          <v-row justify="center">
+            <v-col md="4" cols="12" class="d-flex white--text text-center align-center justify-center">
+              <v-card>
+                <v-img
+                 :src="require(`../assets/campera${2}.png`)"
+                  class="shrink mr-2 d-flex align-center"
+                  contain
+                  height="200px"
+                >
+                <div class="display-3 flex-grow-1 text-center">
+                  <img height="80px" :src="require(`../assets/modelo${number}.png`)" />
+                </div>
+                </v-img>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-item-group>
       <v-sheet
         class="mx-auto"
         elevation="8"
@@ -104,6 +111,7 @@
                   contain
                   height="80px"
                   :src="msrcs[n-1]"
+                  v-on:click="number = n"
                 >
                   <v-scroll-y-transition>
                     <div
@@ -153,12 +161,15 @@
   export default {
     data () {
       return {
+        number: 1,
+        number2: 1,
         srcss:[
-          require('../assets/camperaP.png'),
-          require('../assets/camperaP2.png'),
+          require('../assets/campera1.png'),
+          require('../assets/campera2.png'),
+          require('../assets/campera3.png'),
         ],
         msrcs:[
-          require('../assets/modelo.png'),
+          require('../assets/modelo1.png'),
           require('../assets/modelo2.png'),
           require('../assets/modelo3.png'),
           require('../assets/modelo4.png'),
