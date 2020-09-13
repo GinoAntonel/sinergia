@@ -51,7 +51,7 @@
                 </v-item>
               </v-col>
             </v-row>
-            <v-btn color="primary" @click="e13 = 2">Continuar</v-btn>
+            <v-btn color="primary" @click="e13 = 2">Continuar</v-btn> 
           </v-container>
         </v-item-group>
     </v-stepper-content>
@@ -164,59 +164,56 @@
               </v-card>
             </v-col>
           </v-row>
-        </v-container>
-      </v-item-group>
-      <v-form ref="form" v-model="valid">
-        <v-container>
-          <v-row>
-            <v-col
-              cols="12"
-              md="4"
-            >
-              <v-text-field
-                v-model="firstname"
-                :rules="nameRules"
-                :counter="10"
-                label="First name"
-                required
-              ></v-text-field>
-            </v-col>
-
-            <v-col
-              cols="12"
-              md="4"
-            >
-              <v-text-field
-                v-model="lastname"
-                :rules="nameRules"
-                :counter="10"
-                label="Last name"
-                required
-              ></v-text-field>
-            </v-col>
-
-            <v-col
-              cols="12"
-              md="4"
-            >
-              <v-text-field
-                v-model="email"
-                :rules="emailRules"
-                label="E-mail"
-                required
-              ></v-text-field>
+          <v-row justify="center">
+            <v-col md="4" xs="2" cols="12" class="d-flex white--text text-center align-center justify-center">
+              <v-dialog v-model="dialog" max-width="300px">
+                <template v-slot:activator="{ on, attrs }">
+                  <v-btn rounded v-bind="attrs" v-on="on" color="primary" dark>Hace tu pedido</v-btn>
+                </template>
+                <v-card>
+                  <v-container >
+                    <v-row justify="center">
+                      <v-col class="d-flex align-center justify-center" md="4" xs="1">
+                          <v-img
+                          id="img_rounded"
+                          contain
+                          src="../assets/Logo.jpg"
+                          width="20%"
+                          />
+                      </v-col>
+                    </v-row>
+                  </v-container>
+                
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
+                    <div v-if="number2 == 0">
+                      <v-btn color="blue darken-1" text
+                      v-bind:href="'https://api.whatsapp.com/send?phone=543518 03-3796&text=Hola%20buenas%20tardes,%20me%20gustaria%20comprar%20la%20campera%20negra%20con%20el%20modelo%20'+number"
+                      target="_blank"
+                      @click="dialog = false">Save</v-btn>
+                    </div>
+                    <div v-if="number2 == 1">
+                      <v-btn color="blue darken-1" text
+                      v-bind:href="'https://api.whatsapp.com/send?phone=543516181989&text=Hola%20buenas%20tardes,%20me%20gustaria%20comprar%20la%20campera%20color%20jean%20con%20el%20modelo%20'+number"
+                      target="_blank"
+                      @click="dialog = false">Save</v-btn>
+                    </div>
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
             </v-col>
           </v-row>
         </v-container>
-        <v-btn class="mr-4" @click="submit">submit</v-btn>
-      </v-form>
+      </v-item-group>
     </v-stepper-content>
 
     <v-stepper-step step="4">View setup instructions</v-stepper-step>
 
     <v-stepper-content step="4">
-      <v-card color="grey lighten-1" class="mb-12" height="200px"></v-card>
-      <v-btn color="primary" @click="">Continue</v-btn>
+      <v-card color="grey lighten-1" class="mb-12" height="200px">
+      </v-card>
+      <v-btn color="primary" >Continue</v-btn>
       <v-btn text>Cancel</v-btn>
     </v-stepper-content>
   </v-stepper>
@@ -228,6 +225,7 @@
   export default {
     data () {
       return {
+        dialog: false,
         number: 1,
         number2: 1,
         srcss:[
@@ -253,7 +251,7 @@
 
         ],
         model: null,
-        e13: 1,
+        e13: 3,
         //Form
         valid: false,
         firstname: '',

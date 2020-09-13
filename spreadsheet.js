@@ -14,11 +14,14 @@ client.authorize(function(err, tokens){
     return;
   } else{
     console.log('Connected');
-    gsrun(client);
+    starterPiont(client, 'ss')
   }
 });
+async function starterPiont(cliente, aDatos){
+  gsrun(cliente, aDatos);
+}
 
-async function gsrun (cl){
+async function gsrun (cl, da){
   //connect to my google sheets api (gsapi)
   const gsapi = google.sheets({version: 'v4', auth: cl}); 
   // Testeando si anda el get
@@ -29,14 +32,23 @@ async function gsrun (cl){
   let data = await gsapi.spreadsheets.values.get(option);
   let dataArray = data.data.values;
   console.log(dataArray);
-
-  //Testeando el update
+  let dataArrayTest = [[da, 'cara e naipe']];
+  //Testeando el update  
   const updateOpt = {
     spreadsheetId: '1uoatugWpizmGG5WQ_EdvHrlWWYgIQqGnYgjmxFouV5w',
     range: 'Data!A4',
     valueInputOption: 'USER_ENTERED',
-    resource: {values: dataArray}
+    resource: {values: dataArrayTest},
   };
 
   let res = await gsapi.spreadsheets.values.update(updateOpt);
+
+}
+function callingVuejsFunction(data) {
+  console.log('hakunaMatata');
+  var event = new CustomEvent("hakunaMatata",{ 
+      detail:  {
+          message: "naiveTechNoobs",
+          info: data
+  }});
 }

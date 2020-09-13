@@ -4,6 +4,7 @@
     <v-main id="ccarrousel">
       <Carrousel/>
       <Stepper/>
+      
     </v-main>
     <Footer/>
   </v-app>
@@ -21,6 +22,7 @@ import Carrousel from './components/Carrousel';
 import Footer from './components/Footer';
 import Stepper from './components/Stepper';
 
+
 export default {
   name: 'App',
 
@@ -28,7 +30,8 @@ export default {
     Toolbar,
     Carrousel,
     Footer,
-    Stepper
+    Stepper,
+    
   },
 
   data: () => ({
