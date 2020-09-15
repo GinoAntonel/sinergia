@@ -168,53 +168,81 @@
             <v-col md="4" xs="2" cols="12" class="d-flex white--text text-center align-center justify-center">
               <v-dialog v-model="dialog" max-width="300px">
                 <template v-slot:activator="{ on, attrs }">
-                  <v-btn rounded v-bind="attrs" v-on="on" color="primary" dark>Hace tu pedido</v-btn>
+                  
+                    <div v-if="number2 !== 1">
+                      <v-btn rounded v-bind="attrs" v-on="on" color="primary" dark
+                      v-bind:href="'https://api.whatsapp.com/send?phone=543518033796&text=Hola%20como%20estas?%20Me%20gustaria%20comprar%20la%20campera%20negra%20con%20el%20modelo%20numero:%20'+ number"
+                      target="_blank"
+                      >
+                        Hace tu pedido
+                      </v-btn>
+                    </div>
+                
+                    <div v-else>
+                      <v-btn rounded v-bind="attrs" v-on="on" color="primary" dark
+                      v-bind:href="'https://api.whatsapp.com/send?phone=543518033796&text=Hola%20como%20estas?%20Me%20gustaria%20comprar%20la%20campera%20color%20jean%20con%20el%20modelo%20numero:%20'+ number"
+                      target="_blank"
+                      >
+                        Hace tu pedido
+                      </v-btn>
+                    </div>
+
                 </template>
-                <v-card>
-                  <v-container >
-                    <v-row justify="center">
-                      <v-col class="d-flex align-center justify-center" md="4" xs="1">
+                <v-toolbar dark color="black" text>
+                  <v-spacer></v-spacer>
+                  <v-btn icon dark @click="dialog = false">
+                    <v-icon>mdi-close</v-icon>
+                  </v-btn>
+                </v-toolbar>
+                <v-card
+                dark
+                  flat
+                  tile
+                  class="lighten-1 white--text text-center"
+                >
+                  <v-card-text>
+                    <v-container >
+                      <v-row justify="center">
+                        <v-col class="d-flex align-center justify-center" lg="12" xs="4">
                           <v-img
                           id="img_rounded"
+                          alt="Sinergia Logo"
+                          class="shrink mr-2"
+                          contain
+                          src="../assets/icon_checked.png"
+                          transition="scale-transition"
+                          width="80"
+                          />
+                        </v-col>
+                      </v-row>
+                      <v-row justify="center">
+                        <v-col lg="12" xs="4">Ya resibimos tu mensaje, pronto nos estaremos comunicando con vos!</v-col>
+                      </v-row>
+                      <v-divider></v-divider>
+                      <v-row justify="center">
+                        <v-col class="d-flex align-center justify-center" lg="12" xs="4">
+                          <v-img
+                          id="img_rounded"
+                          alt="Sinergia Logo"
+                          class="shrink mr-2"
                           contain
                           src="../assets/Logo.jpg"
-                          width="20%"
+                          transition="scale-transition"
+                          width="80"
                           />
-                      </v-col>
-                    </v-row>
-                  </v-container>
-                
-                  <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-                    <div v-if="number2 == 0">
-                      <v-btn color="blue darken-1" text
-                      v-bind:href="'https://api.whatsapp.com/send?phone=543518 03-3796&text=Hola%20buenas%20tardes,%20me%20gustaria%20comprar%20la%20campera%20negra%20con%20el%20modelo%20'+number"
-                      target="_blank"
-                      @click="dialog = false">Save</v-btn>
-                    </div>
-                    <div v-if="number2 == 1">
-                      <v-btn color="blue darken-1" text
-                      v-bind:href="'https://api.whatsapp.com/send?phone=543516181989&text=Hola%20buenas%20tardes,%20me%20gustaria%20comprar%20la%20campera%20color%20jean%20con%20el%20modelo%20'+number"
-                      target="_blank"
-                      @click="dialog = false">Save</v-btn>
-                    </div>
-                  </v-card-actions>
+                        </v-col>
+                      </v-row>
+                      <v-row justify="center">
+                        <v-col lg="12" xs="4">MUCHAS GRACIAS POR CONFIAR EN NOSOTROS!</v-col>
+                      </v-row>
+                    </v-container>
+                  </v-card-text>
                 </v-card>
               </v-dialog>
             </v-col>
           </v-row>
         </v-container>
       </v-item-group>
-    </v-stepper-content>
-
-    <v-stepper-step step="4">View setup instructions</v-stepper-step>
-
-    <v-stepper-content step="4">
-      <v-card color="grey lighten-1" class="mb-12" height="200px">
-      </v-card>
-      <v-btn color="primary" >Continue</v-btn>
-      <v-btn text>Cancel</v-btn>
     </v-stepper-content>
   </v-stepper>
 </template>
@@ -251,7 +279,7 @@
 
         ],
         model: null,
-        e13: 3,
+        e13: 1,
         //Form
         valid: false,
         firstname: '',
