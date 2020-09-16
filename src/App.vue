@@ -4,7 +4,6 @@
     <v-main id="ccarrousel">
       <Carrousel/>
       <Stepper/>
-      
     </v-main>
     <Footer/>
   </v-app>
@@ -13,6 +12,9 @@
 <style >
 #ccarrousel{
   background: black;
+}
+*{
+  font-family: 'Julius Sans One', sans-serif;
 }
 </style>
 
